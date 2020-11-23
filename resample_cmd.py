@@ -7,7 +7,7 @@ Created on Wed Nov 18 16:43:08 2020
 """
 
 from argparse import ArgumentParser
-from rstools.resample import resample
+from rstools.warp import resample
 
 
 if __name__ == '__main__':
