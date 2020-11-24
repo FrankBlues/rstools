@@ -34,5 +34,6 @@ if __name__ == '__main__':
     res = args.output_res
     res = float(res) if res is not None else None
     reproject_rio(args.input_raster, args.output_raster, args.dst_crs,
-                  res, method=args.resampling_method,
+                  resample_method=args.resampling_method,
+                  resolution=args.output_res,
                   src_crs=args.src_crs)

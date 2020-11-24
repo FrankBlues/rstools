@@ -48,5 +48,17 @@ def merge_rio(src_datasets_to_mosaic, output, res=None, nodata=None,
 
 def mosaic_simple(in_rasters, output, res=None, nodata=None, crs=None):
     """指定需要镶嵌的栅格文件列表,进行简单镶嵌."""
-    merge_rio([rasterio.open(f) for f in in_rasters], output, res=None,
-              nodata=None, crs=None)
+    try:
+        raster_datasets = [rasterio.open(f) for f in in_rasters]
+    except Exception:  # 遇到错误文件逐步打开
+        raster_datasets = []
+        for f in in_rasters:
+            try:
+                ds = rasterio.open(f)
+            except Exception as e:
+                print('Current file cannot be open, the file is: {}.'.format(f))
+                print('Error message is: {}'.format(e))
+                continue
+            raster_datasets.append(ds)
+
+    merge_rio(raster_datasets, output, res=None, nodata=None, crs=None)

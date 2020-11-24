@@ -10,6 +10,8 @@ import rasterio
 from rasterio import Affine
 from rasterio.warp import reproject, Resampling, calculate_default_transform
 
+from .io_utils import check_parent_dir
+
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -51,7 +53,7 @@ def resample(srcfile, dstfile, new_res, width=0, height=0,
             Resampling.q3 (GDAL >= 2.2)
 
     """
-
+    check_parent_dir(dstfile)
     if isinstance(method, str):
         method = RESAMPLE_METHODS.get(method)
     with rasterio.open(srcfile) as src:
@@ -105,6 +107,7 @@ def reproject_rio(infile, outfile, dst_crs='EPSG:4326',
                 means same as input.
 
     """
+    check_parent_dir(outfile)
     if isinstance(resample_method, str):
         resample_method = RESAMPLE_METHODS.get(resample_method)
     with rasterio.open(infile) as src:
