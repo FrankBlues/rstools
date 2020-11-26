@@ -22,15 +22,15 @@ if __name__ == '__main__':
 
     parse = ArgumentParser()
 
-    parse.add_argument('--input_json', required=True,
+    parse.add_argument('-i', '--input_json', required=True,
                        help="输入波段定义的json格式配置文件")
-    parse.add_argument('--output_raster', required=True,
+    parse.add_argument('-o', '--output_raster', required=True,
                        help="输出栅格数据")
-    parse.add_argument('--expression', required=True,
+    parse.add_argument('-e', '--expression', required=True,
                        help="栅格计算表达式")
-    parse.add_argument('--format', default='GTiff',
+    parse.add_argument('-f', '--format', default='GTiff',
                        help="输出结果命名字段,默认GTiff")
-    parse.add_argument('--dtype', default='uint8', choices=dtypes,
+    parse.add_argument('-t', '--dtype', default='uint8', choices=dtypes,
                        help="输出栅格类型")
 
     args = parse.parse_args()

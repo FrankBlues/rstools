@@ -15,13 +15,13 @@ if __name__ == '__main__':
     resampling_methods = ['nearest', 'bilinear', 'cubic', 'average',
                           'max', 'min', 'med']
     parse = ArgumentParser()
-    parse.add_argument('--input_raster', required=True,
+    parse.add_argument('-i', '--input_raster', required=True,
                        help="输入栅格数据")
-    parse.add_argument('--output_raster', required=True,
+    parse.add_argument('-o', '--output_raster', required=True,
                        help="输出栅格数据")
-    parse.add_argument('--output_res', required=True,
+    parse.add_argument('-r', '--output_res', required=True,
                        help="采样后的分辨率")
-    parse.add_argument('--resampling_method', default='bilinear',
+    parse.add_argument('-m', '--resampling_method', default='bilinear',
                        choices=resampling_methods,
                        help="重采样方法")
 

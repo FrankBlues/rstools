@@ -90,7 +90,7 @@ def write_json(filename, data):
 
 
 def get_image_file(path,
-                   extensions=('tif', 'img', 'tiff', 'TIF', 'IMG', 'TIFF')):
+                   extensions=['tif', 'img', 'tiff', 'TIF', 'IMG', 'TIFF']):
     """List all files within a directory with the given extensions."""
     img_files = []
     for ext in extensions:
