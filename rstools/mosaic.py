@@ -34,7 +34,7 @@ def merge_rio(src_datasets_to_mosaic, output, res=None, nodata=None,
                 "height": mosaic.shape[1],
                 "width": mosaic.shape[2],
                 "transform": out_trans,
-                "crs": src.crs if (crs is None) else crs,
+                "crs": src.crs if crs is None else crs,
                 "nodata": nodata
                 })
 
@@ -61,4 +61,4 @@ def mosaic_simple(in_rasters, output, res=None, nodata=None, crs=None):
                 continue
             raster_datasets.append(ds)
 
-    merge_rio(raster_datasets, output, res=None, nodata=None, crs=None)
+    merge_rio(raster_datasets, output, res=res, nodata=nodata, crs=crs)
