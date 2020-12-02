@@ -16,9 +16,9 @@ if __name__ == '__main__':
                           'max', 'min', 'med']
     parse = ArgumentParser()
     parse.add_argument('-i', '--input_raster', required=True,
-                       help="输入栅格数据")
+                       help="需要进行重采样的栅格数据")
     parse.add_argument('-o', '--output_raster', required=True,
-                       help="输出栅格数据")
+                       help="重采样后的栅格数据")
     parse.add_argument('-r', '--output_res', required=True,
                        help="采样后的分辨率")
     parse.add_argument('-m', '--resampling_method', default='bilinear',
