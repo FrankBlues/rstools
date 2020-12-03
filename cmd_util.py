@@ -9,7 +9,7 @@ Created on Wed Nov 11 10:08:49 2020
 
 def trans_none(value):
     """处理前端传过来的字符型空值, 如果参数为字符型None/none, 转换为python语言中的None值."""
-    if value == 'None' or value == 'none':
+    if value in ['None', 'none', '']:
         value = None
     return value
 

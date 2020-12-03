@@ -7,7 +7,7 @@ Created on Tue Dec  1 14:44:51 2020
 import os
 import rasterio
 
-from .io_utils import check_parent_dir
+from .io_utils import check_parent_dir, read_json
 
 
 def get_raster_arr(in_r, index):
@@ -46,7 +46,7 @@ def layer_stack(layer_dict, out_raster, out_format='GTiff', out_crs=None):
 
     crs = meta.get('crs') if out_crs is None else out_crs
     meta.update({'driver': out_format,
-                 'count': 4,
+                 'count': n_layer,
                  'crs': crs})
     check_parent_dir(out_raster)
     with rasterio.open(out_raster, 'w', **meta) as dst:
@@ -57,18 +57,9 @@ def layer_stack(layer_dict, out_raster, out_format='GTiff', out_crs=None):
     return out_raster
 
 
-if __name__ == '__main__':
-    l8_dir = r'D:\test\LC08_L1TP_123033_20200904_20200917_01_T1'
-    b1 = os.path.join(l8_dir, 'LC08_L1TP_123033_20200904_20200917_01_T1_B2.TIF')
-    b2 = os.path.join(l8_dir, 'LC08_L1TP_123033_20200904_20200917_01_T1_B3.TIF')
-    b3 = os.path.join(l8_dir, 'LC08_L1TP_123033_20200904_20200917_01_T1_B4.TIF')
-    b4 = os.path.join(l8_dir, 'LC08_L1TP_123033_20200904_20200917_01_T1_B5.TIF')
+def layer_stack_use_json(layers_json, out_raster, out_format='GTiff',
+                         out_crs=None):
+    """从配置文件中获取波段定义后进行波段组合."""
+    layer_stack(read_json(layers_json), out_raster, out_format=out_format,
+                out_crs=out_crs)
 
-    layer_dic = {'b1': [b1, 1],
-                 'b2': [b2, 1],
-                 'b3': [b3, 1],
-                 'b4': [b4, 1],
-                 }
-    d = r'D:\temp\project_wgs84.tif'
-    out_raster = 'd:/test/layer_stack.tif'
-    layer_stack(layer_dic, out_raster, out_format='GTiff')
