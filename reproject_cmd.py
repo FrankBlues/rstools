@@ -21,7 +21,7 @@ if __name__ == '__main__':
                        help="输入栅格数据")
     parse.add_argument('-o', '--output_raster', required=True,
                        help="输出栅格数据")
-    parse.add_argument('-dc', '--dst_crs', required=True, default='EPSG:4326',
+    parse.add_argument('-dc', '--dst_crs', default='EPSG:4326',
                        help="目标坐标参考")
     parse.add_argument('-r', '--output_res', default=None,
                        help="采样后的分辨率,如果未指定则采用原始数据分辨率.")

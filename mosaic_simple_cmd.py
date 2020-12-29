@@ -45,7 +45,7 @@ if __name__ == '__main__':
     else:
         print("Unrecognized param 'input_rasters'.")
         exit(1)
-
+    print(len(input_rasters))
     res = trans_numbers(args.output_res)
     nodata = trans_numbers(args.nodata_value)
     mosaic_simple(input_rasters, args.output_raster,

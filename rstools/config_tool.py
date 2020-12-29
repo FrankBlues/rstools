@@ -34,6 +34,7 @@ def create_band_def_dict(b1, b2, b3, other_bands):
 
     null_values = ['None', 'none', '', ' ']
     layers = {}
+
     if b1 in null_values or b2 in null_values:
         raise ValueError("Band b1 and b2 cannot be empty.")
     layers['b1'] = parse_args(b1)
@@ -43,13 +44,14 @@ def create_band_def_dict(b1, b2, b3, other_bands):
         layers['b3'] = parse_args(b3)
     else:  # 如果第三个波段为空,则不再进行下面的判断
         return layers
-    
+
     if ';' in other_bands:    
         other_band_list = [s.strip() for s in other_bands.split(';')]
     else:  # 只有一个波段输入
         other_band_list = [other_bands.strip()]
         if other_band_list[0] in null_values:
             return layers
+
     idx = 4
     for b in other_band_list:
         layers['b' + str(idx)] = parse_args(b)
