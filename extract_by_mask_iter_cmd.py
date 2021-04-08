@@ -22,7 +22,7 @@ if __name__ == '__main__':
                        help="输出栅格目录,不存在则创建")
     parse.add_argument('-na', '--name_field', required=True,
                        help="输出结果命名字段")
-    parse.add_argument('n', '--nodata', default='0',  # type=float,
+    parse.add_argument('-n', '--nodata', default='0',  # type=float,
                        help="空值,默认0")
 
     args = parse.parse_args()

@@ -100,3 +100,14 @@ def get_image_file(path,
             if f_str not in img_files:
                 img_files.append(f_str)
     return img_files
+
+
+if __name__ == '__main__':
+    r = r'D:\work\data\影像样例\610124\610124.tif'
+    import rasterio
+    ds = rasterio.open(r)
+    meta = ds.meta
+    # crs = meta['crs']
+    meta['crs'] = meta['crs'].to_wkt()
+    write_json('e:/aaa.json', meta)
+

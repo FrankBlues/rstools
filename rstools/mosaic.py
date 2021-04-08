@@ -62,3 +62,14 @@ def mosaic_simple(in_rasters, output, res=None, nodata=None, crs=None):
             raster_datasets.append(ds)
 
     merge_rio(raster_datasets, output, res=res, nodata=nodata, crs=crs)
+
+
+if __name__ == '__main__':
+    import os, glob
+    tiles_dir = r'D:\g_tiles\16'
+    tiles = glob.glob(os.path.join(tiles_dir, '522*.tif'))
+    mosaic_simple(tiles, os.path.join(tiles_dir, 'part', '522.tif'), crs='EPSG:3857')
+    
+    
+    
+    

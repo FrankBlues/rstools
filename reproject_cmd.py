@@ -3,6 +3,8 @@
 Created on Mon Nov 23 10:25:48 2020
 
 投影转换
+Usage:
+>>> python reproject_cmd.py -i D:\g_tiles\t_14.tif -o D:\g_tiles\t_14_prj.tif -dc EPSG:4326 
 @author: mlm
 """
 

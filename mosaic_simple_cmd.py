@@ -3,7 +3,7 @@
 Created on Mon Nov 23 11:42:39 2020
 
 Usage:
->>> python mosaic_simple_cmd.py -i D:\g_terrain\14 -o D:\g_terrain\t_14.tif -c 'EPSG:3857 -f 'png'
+>>> python mosaic_simple_cmd.py -i D:\g_tiles\14 -o D:\g_tiles\t_14.tif -c 'EPSG:3857' -f png
 @author: mlm
 """
 import os
