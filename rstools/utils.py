@@ -5,7 +5,7 @@ Created on Thu Apr  8 11:17:31 2021
 @author: mlm
 """
 import rasterio
-
+from osgeo import gdal
 from .io_utils import check_parent_dir
 
 
@@ -49,8 +49,11 @@ if __name__ == '__main__':
     in_raster = r'E:\T50SKH_20210107T031121_TCI.jp2'
 
     out_file = 'd:/temp11/projection.txt'
+    
+    ds = gdal.Open(in_raster)
+    
 
-    get_target_crs(in_raster, out_file)
+    # get_target_crs(in_raster, out_file)
 
 
 
